@@ -1,0 +1,172 @@
+﻿@model PostResident
+@{
+    ViewData["Title"] = "Create Resident";
+}
+
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-9">
+        <a href="@Url.Action("Index", "Resident")">   
+            <button type="button" class="btn cst-button-pop-secondary d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+                Back To Home
+            </button>
+        </a>
+        <h1 class="my-4 cst-highlight-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+              <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+              <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            <span class="mx-2">@ViewData["Title"]</span>
+        </h1>
+        <p class="mb-4">Please fill out the form below based on your identity</p>
+        <p class="cst-highlight-secondary">@ViewBag.InvalidExt</p>
+
+        <form class="form mt-3 mb-5" method="POST" enctype="multipart/form-data" action="@Url.Action("CreateResident", "Resident")">
+            <div class="form-group">
+                <label>
+                    Fullname /                    
+                    <span class="text-secondary">Nama Lengkap</span>
+                </label>
+                <input name="FullName" type="text" maxlength="35" class="form-control" placeholder="e.g. dita puspa aditya" required/>
+            </div>            
+            <div class="form-group">
+                <label>
+                     Gender /                    
+                    <span class="text-secondary">Jenis Kelamin</span>
+                </label>
+                <select name="Gender" class="w-100" >               
+                    <option value="laki-laki" selected>Laki-laki</option>
+                    <option value="perempuan" >Perempuan</option>                                 
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Nationality /                    
+                    <span class="text-secondary">Kewarganegaraan</span>
+                </label>
+                <input name="Nationality" type="text" maxlength="35" class="form-control" placeholder="e.g. indonesia" required/>
+            </div>              
+             <div class="form-group">
+                <label>
+                    Date of birth /                    
+                    <span class="text-secondary">Tanggal Lahir</span>
+                </label>
+                <input name="DateOfBirth" type="date" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Place of birth /                    
+                    <span class="text-secondary">Tempat Lahir</span>
+                </label>
+                <input name="PlaceOfBirth" type="text" maxlength="20" class="form-control" placeholder="e.g. yogyakarta" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                     Religion /                    
+                    <span class="text-secondary">Agama</span>
+                </label>
+                <select name="Religion" class="w-100" >               
+                    <option value="kristen" selected>Kristen</option>
+                    <option value="buddha" >Buddha</option>                
+                    <option value="islam">Islam</option>  
+                    <option value="islam">Hindu</option>  
+                    <option value="islam">Katolik</option>  
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Profession /                    
+                    <span class="text-secondary">Profesi / Pekerjaan</span>
+                </label>
+                <input name="Profession" type="text" maxlength="35" class="form-control" placeholder="e.g. karyawan swasta" required/>
+            </div>                     
+            <div class="form-group">
+                <label>
+                      Married Status /                    
+                    <span class="text-secondary">Status Pernikahan / Status Perkawinan</span>
+                </label>
+                <select name="MarriedStatus" class="w-100" >               
+                    <option value="belum kawin" selected>Belum Kawin</option>
+                    <option value="kawin" >Kawin</option>                
+                    <option value="cerai hidup">Cerai Hidup</option>  
+                    <option value="cerai mati">Cerai Mati</option>                      
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Blood Type /                    
+                    <span class="text-secondary">Golongan Darah</span>
+                </label>
+                <select name="BloodType" class="w-100" >               
+                    <option value="a" selected>A</option>
+                    <option value="b" >B</option>                
+                    <option value="ab">AB</option>  
+                    <option value="o">O</option>                      
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Current City /                    
+                    <span class="text-secondary">Kota Sekarang / Kota Saat Ini</span>
+                </label>
+                <input name="City" type="text" maxlength="30" class="form-control" placeholder="e.g. jakarta" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Current Province /                    
+                    <span class="text-secondary">Provinsi Sekarang / Provinsi Saat Ini</span>
+                </label>
+                <input name="Province" type="text" maxlength="30" class="form-control" placeholder="e.g. jawa barat" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Sub District /                    
+                    <span class="text-secondary">Kecamatan</span>
+                </label>
+                <input name="SubDistrict" type="text" maxlength="30" class="form-control" placeholder="e.g. kebon jeruk" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Urban District /                    
+                    <span class="text-secondary">Kelurahan</span>
+                </label>
+                <input name="UrbanDistrict" type="text" maxlength="30" class="form-control" placeholder="e.g. kelapa dua" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Neighborhood /                    
+                    <span class="text-secondary">Rukun Tetangga / RT</span>
+                </label>
+                <input name="Neighborhood" type="number" class="form-control" placeholder="e.g. 8" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Hamlet /                    
+                    <span class="text-secondary">Rukun Warga / RW</span>
+                </label>
+                <input name="Hamlet" type="number" class="form-control" placeholder="e.g. 9" required/>
+            </div>           
+            <div class="form-group">
+                <label>
+                    Current Address /                    
+                    <span class="text-secondary">Alamat Sekarang / Alamat Saat Ini</span>
+                </label>
+                <input name="Address" type="text" maxlength="30" class="form-control" placeholder="e.g. jl. jenderal sudiman, gowongan, 54433" required />
+            </div>                        
+            <div class="mt-4">
+                <label>
+                     Upload Photo (Allowed extension are .jpg, .jpeg, or .png) /         
+                    <span class="text-secondary">Unggah Foto (Ekstensi file yang diperbolehkan adalah .jpg, .jepg, atau .png)</span>
+                </label>
+                <input name="ImageFile" type="file" accept=".jpg,.jpeg,.png" class="form-control mt-2 border fw-light"  required/>
+            </div>
+
+            <div class="my-4 d-flex justify-content-center">
+                <button type="submit" class="btn cst-button-submit" >Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

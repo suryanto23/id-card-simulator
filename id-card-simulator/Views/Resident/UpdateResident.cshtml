@@ -1,0 +1,268 @@
+﻿@model ResidentModel
+@{
+    ViewData["Title"] = "Update Resident";
+}
+
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-9">
+        <a href="@Url.Action("Index", "Resident")">   
+            <button type="button" class="btn cst-button-pop-secondary d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+                Back To Home
+            </button>
+        </a>
+        <h1 class="my-4 cst-highlight-primary">
+             <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+              <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+            </svg>
+            <span class="mx-2">@ViewData["Title"]</span>
+        </h1>
+        <p class="mb-4">You may update the corresponding resident by editing in the form below</p>
+        <p class="cst-highlight-secondary">@ViewBag.InvalidExt</p>
+
+        <form class="form mt-3" method="POST" enctype="multipart/form-data" action="@Url.Action("UpdateResident", "Resident")">
+            <div class="form-group">
+                <label>
+                    Fullname /                    
+                    <span class="text-secondary">Nama Lengkap</span>
+                </label>
+                <input name="FullName" type="text" maxlength="35" class="form-control" placeholder="e.g. dita puspa aditya" value="@Model.FullName" required/>
+            </div>     
+            <div class="form-group">
+                <label>
+                     Gender /                    
+                    <span class="text-secondary">Jenis Kelamin</span>
+                </label>
+                <select name="Gender" class="w-100" >               
+                  @{
+                    if(@Model.Gender == "laki-laki"){
+                        <option value="laki-laki" selected>Laki-laki</option>
+                    }
+                    else
+                    {
+                        <option value="laki-laki">Laki-laki</option>
+                    }
+                    if(@Model.Gender == "perempuan"){
+                        <option value="perempuan" selected>Perempuan</option> 
+                    }
+                    else
+                    {
+                        <option value="perempuan">Perempuan</option> 
+                    }
+                }                                       
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Nationality /                    
+                    <span class="text-secondary">Kewarganegaraan</span>
+                </label>
+                <input name="Nationality" type="text" maxlength="35" class="form-control" placeholder="e.g. indonesia" value="@Model.Nationality" required/>
+            </div> 
+            <div class="form-group">
+                <label>
+                    Date of birth /                    
+                    <span class="text-secondary">Tanggal Lahir</span>
+                </label>
+                <input name="DateOfBirth" type="date" class="form-control" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Place of birth /                    
+                    <span class="text-secondary">Tempat Lahir</span>
+                </label>
+                <input name="PlaceOfBirth" type="text" maxlength="20" class="form-control" placeholder="e.g. yogyakarta" value="@Model.PlaceOfBirth" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                     Religion /                    
+                    <span class="text-secondary">Agama</span>
+                </label>
+                <select name="Religion" class="w-100" >               
+                    @{
+                        if(@Model.Religion == "kristen"){
+                            <option value="kristen" selected>Kristen</option>
+                        }
+                        else
+                        {
+                            <option value="kristen">Kristen</option>
+                        }
+                        if(@Model.Religion == "buddha"){
+                            <option value="buddha" selected>Buddha</option> 
+                        }
+                        else
+                        {
+                            <option value="buddha" >Buddha</option> 
+                        }
+                         if(@Model.Religion == "islam"){
+                            <option value="islam" selected>Islam</option> 
+                        }
+                        else
+                        {
+                            <option value="islam" >Islam</option> 
+                        }
+                         if(@Model.Religion == "hindu"){
+                            <option value="hindu" selected>Hindu</option> 
+                        }
+                        else
+                        {
+                            <option value="hindu" >Hindu</option> 
+                        }
+                         if(@Model.Religion == "katolik"){
+                            <option value="katolik" selected>Katolik</option> 
+                        }
+                        else
+                        {
+                            <option value="katolik" >Katolik</option> 
+                        }
+                    }  
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Profession /                    
+                    <span class="text-secondary">Profesi / Pekerjaan</span>
+                </label>
+                <input name="Profession" type="text" maxlength="35" class="form-control" placeholder="e.g. karyawan swasta" value="@Model.Profession"  required/>
+            </div>   
+            <div class="form-group">
+                <label>
+                      Married Status /                    
+                    <span class="text-secondary">Status Pernikahan / Status Perkawinan</span>
+                </label>
+                <select name="MarriedStatus" class="w-100" >               
+                    @{
+                    if(@Model.MarriedStatus == "belum kawin"){
+                        <option value="belum kawin" selected>Belum Kawin</option>
+                    }
+                    else
+                    {
+                        <option value="belum kawin">Belum Kawin</option>
+                    }
+                     if(@Model.MarriedStatus == "kawin"){
+                        <option value="kawin" selected>Kawin</option>
+                    }
+                    else
+                    {
+                        <option value="kawin">Kawin</option>
+                    }
+                     if(@Model.MarriedStatus == "cerai hidup"){
+                        <option value="cerai hidup" selected>Cerai Hidup</option>
+                    }
+                    else
+                    {
+                        <option value="cerai hidup">Cerai Hidup</option>
+                    }
+                     if(@Model.MarriedStatus == "cerai mati"){
+                        <option value="cerai mati" selected>Cerai Mati</option>
+                    }
+                    else
+                    {
+                        <option value="cerai mati">Cerai Mati</option>
+                    }
+                }                      
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Blood Type /                    
+                    <span class="text-secondary">Golongan Darah</span>
+                </label>                
+                <select name="BloodType" class="w-100" >               
+                    @{
+                    if(@Model.BloodType == "a"){
+                        <option value="a" selected>A</option>
+                    }
+                    else
+                    {
+                        <option value="a">A</option>
+                    }
+                     if(@Model.BloodType == "b"){
+                        <option value="b" selected>B</option>
+                    }
+                    else
+                    {
+                        <option value="b">B</option>
+                    }
+                     if(@Model.BloodType == "ab"){
+                       <option value="ab" selected>AB</option>
+                    }
+                    else
+                    {
+                       <option value="ab">AB</option>
+                    }
+                     if(@Model.BloodType == "o"){
+                       <option value="o" selected>O</option>
+                    }
+                    else
+                    {
+                        <option value="o">O</option>
+                    }
+                }                      
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Current City /                    
+                    <span class="text-secondary">Kota Sekarang / Kota Saat Ini</span>
+                </label>
+                <input name="City" type="text" maxlength="30" class="form-control" placeholder="e.g. jakarta" value="@Model.City" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Current Province /                    
+                    <span class="text-secondary">Provinsi Sekarang / Provinsi Saat Ini</span>
+                </label>
+                <input name="Province" type="text" maxlength="30" class="form-control" placeholder="e.g. jawa barat" value="@Model.Province" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Sub District /                    
+                    <span class="text-secondary">Kecamatan</span>
+                </label>
+                <input name="SubDistrict" type="text" maxlength="30" class="form-control" placeholder="e.g. kebon jeruk" value="@Model.SubDistrict" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Urban District /                    
+                    <span class="text-secondary">Kelurahan</span>
+                </label>
+                <input name="UrbanDistrict" type="text" maxlength="30" class="form-control" placeholder="e.g. kelapa dua" value="@Model.UrbanDistrict" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Neighborhood /                    
+                    <span class="text-secondary">Rukun Tetangga / RT</span>
+                </label>
+                <input name="Neighborhood" type="number" class="form-control" placeholder="e.g. 8" value="@Model.Neighborhood" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Hamlet /                    
+                    <span class="text-secondary">Rukun Warga / RW</span>
+                </label>
+                <input name="Hamlet" type="number" class="form-control" placeholder="e.g. 9" value="@Model.Hamlet" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    Current Address /                    
+                    <span class="text-secondary">Alamat Sekarang / Alamat Saat Ini</span>
+                </label>
+                <input name="Address" type="text" maxlength="30" class="form-control" placeholder="e.g. jl. jenderal sudiman, gowongan, 54433" value="@Model.Address" required />
+            </div>   
+            <div class="mt-4">
+                <label>
+                     Replace Photo (Allowed extension are .jpg, .jpeg, or .png) /         
+                    <span class="text-secondary">Perbaharui Foto (Ekstensi file yang diperbolehkan adalah .jpg, .jepg, atau .png</span>
+                </label>
+                <input name="ImageFile" type="file" accept=".jpg,.jpeg,.png" class="form-control mt-2 border fw-light"/>
+            </div>
+
+            <div class="my-4 d-flex justify-content-center">
+                <button type="submit" class="btn cst-button-submit" >Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

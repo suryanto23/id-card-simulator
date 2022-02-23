@@ -1,0 +1,81 @@
+﻿@model ResidentModel
+@{
+    ViewData["Title"] = "View Id Card";
+}
+
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-11">
+        <div class="mx-5 mb-5">
+            <a href="@Url.Action("Index", "Resident")">   
+                <button type="button" class="btn cst-button-pop-secondary d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                    Back To Home
+                </button>
+            </a>
+            <h1 class="mt-4 cst-highlight-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                  <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+                </svg>
+                @ViewData["Title"]
+            </h1>
+            <p class="mb-4">Preview identity card based on selected resident</p>
+        </div>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-end">
+                <div class="cst-card-image-cover-frame">
+                    <img src="~/assets//images/background/card-bg-front.jpg" class="cst-card-image-cover" />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="cst-bg-image">             
+                    <div class="row mx-0 cst-text-reduce text-uppercase fw-bold">
+                        <div class="col-12 mt-2 text-center cst-card-margin-bottom-text">
+                            <h4 class="m-0 fw-bold">PROVINSI @Model.Province</h5>
+                            <h4 class="m-0 fw-bold">KOTA @Model.City</h4>
+                        </div>
+                        <div class="col-8">
+                            <div class="row cst-card-padding-left">
+                                <div class="col-12 d-flex flex-column px-0">
+                                    <h4 class="cst-nin-margin-left-minus">@Model.Nin</h4>
+                                    <span>@Model.FullName</span>
+                                    <span>@Model.PlaceOfBirth, @Model.DateOfBirth.ToString("dd-MM-yyyy")</span>
+                                </div>
+                                <div class="col-11 px-0">
+                                    @Model.Gender
+                                </div>
+                                <div class="col-1 px-0 text-end">
+                                    <small>@Model.BloodType</small>
+
+                                </div>
+                                <div class="col-12 px-0">
+                                    @Model.Address
+                                </div>
+                                <div class="col-12 d-flex flex-column px-0">                            
+                                    <span>@Model.Neighborhood/@Model.Hamlet</span>
+                                    <span>@Model.UrbanDistrict</span>
+                                    <span>@Model.SubDistrict</span>
+                                    <span>@Model.Religion</span>
+                                    <span>@Model.MarriedStatus</span>
+                                    <span>@Model.Profession</span>
+                                    <span>@Model.Nationality</span>
+                                    <span>SEUMUR HIDUP</span>
+                                </div>                        
+                            </div>
+                        </div>
+                         <div class="col-4 px-0" >
+                             <div class="cst-card-image-frame">
+                                <img src="@("~/assets/images/photos/" + Model.Image)" asp-append-version="true" class="cst-card-image" />
+                             </div>
+                            <div class="mt-1 ms-4 d-flex flex-column align-items-center cst-text-reduce cst-line-reduce">
+                                <span>KOTA BATAM</span>
+                                <span>@Model.IssuedDate.ToString("dd-MM-yyyy")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
